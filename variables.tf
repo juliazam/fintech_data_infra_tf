@@ -5,7 +5,16 @@ variable "project_name" {
 
 variable "environment" {
     type = string
-    default = "dev"
+
+    validation {
+        condition = contains(["dev", "staging", "prod"], var.environment)
+        error_message = "environment must be one of: dev, staging, prod."
+    }
+}
+
+variable "db_password" {
+    type      = string
+    sensitive = true
 }
 
 locals {
