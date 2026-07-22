@@ -4,6 +4,13 @@ services:
     container_name: ministack
     ports:
       - "4566:4566"
+    environment:
+      - PERSIST_STATE=1
+      - S3_PERSIST=1
+      - RDS_PERSIST=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./ministack-data/state:/tmp/ministack-state
+      - ./ministack-data/s3:/tmp/ministack-data/s3
+
     restart: unless-stopped

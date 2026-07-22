@@ -9,7 +9,11 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Файлы с реальными значениями переменных (могут содержать секреты)
+# Local data from MiniStack (AWS emulator)
+ministack-data/
+
+
+# Files with real data (may contain secrets)
 *.tfvars
 *.tfvars.json
 !terraform.tfvars.example
