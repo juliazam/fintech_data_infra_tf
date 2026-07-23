@@ -6,6 +6,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 6.0"
     }
+
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.0"
+    }
   }
 
   backend "s3" {
@@ -39,6 +44,7 @@ provider "aws" {
     iam = "http://localhost:4566"
     dynamodb = "http://localhost:4566"
     rds = "http://localhost:4566"
+    lambda = "http://localhost:4566"
   }
   
   skip_credentials_validation = true
