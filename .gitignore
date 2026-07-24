@@ -8,6 +8,9 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+tfplan
+*.tfplan
+
 
 # Local data from MiniStack (AWS emulator)
 ministack-data/

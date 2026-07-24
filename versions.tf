@@ -18,11 +18,10 @@ terraform {
     key      = "terraform.tfstate"
     region   = "us-east-1"
     
-    dynamodb_table = "fintech-data-infra-tf-dev-tf-lock"
+    use_lockfile = true
 
     endpoints = {
       s3 = "http://localhost:4566"
-      dynamodb = "http://localhost:4566"
     }
     skip_credentials_validation = true
     skip_requesting_account_id  = true
@@ -49,4 +48,22 @@ provider "aws" {
   
   skip_credentials_validation = true
   skip_requesting_account_id  = true
+}
+
+provider "aws" {
+  alias  = "glue_workaround"
+  region = "us-east-1"
+
+  access_key = "test"
+  secret_key = "test"
+
+  s3_use_path_style = true
+
+  endpoints {
+    glue = "http://localhost:4566"
+    sts  = "http://localhost:4566"
+  }
+
+  skip_credentials_validation = true
+  skip_requesting_account_id  = false
 }
