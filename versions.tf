@@ -14,10 +14,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket   = "fintech-data-infra-tf-dev-tfstate"
-    key      = "terraform.tfstate"
-    region   = "us-east-1"
-    
+    bucket = "fintech-data-infra-tf-dev-tfstate"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+
     use_lockfile = true
 
     endpoints = {
@@ -26,26 +26,26 @@ terraform {
     skip_credentials_validation = true
     skip_requesting_account_id  = true
     use_path_style              = true
-    access_key = "test"
-    secret_key = "test"
+    access_key                  = "test"
+    secret_key                  = "test"
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region     = "us-east-1"
   access_key = "test"
   secret_key = "test"
 
   s3_use_path_style = true
 
   endpoints {
-    s3  = "http://localhost:4566"
-    iam = "http://localhost:4566"
+    s3       = "http://localhost:4566"
+    iam      = "http://localhost:4566"
     dynamodb = "http://localhost:4566"
-    rds = "http://localhost:4566"
-    lambda = "http://localhost:4566"
+    rds      = "http://localhost:4566"
+    lambda   = "http://localhost:4566"
   }
-  
+
   skip_credentials_validation = true
   skip_requesting_account_id  = true
 }

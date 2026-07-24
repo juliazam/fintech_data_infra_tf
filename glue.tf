@@ -1,12 +1,12 @@
 resource "aws_glue_catalog_database" "etl_catalog" {
-  name = "${replace(local.full_name, "-", "_")}_catalog"
-  provider = aws.glue_workaround
+  name       = "${replace(local.full_name, "-", "_")}_catalog"
+  provider   = aws.glue_workaround
   catalog_id = "000000000000"
 }
 
 resource "aws_glue_catalog_table" "raw_transactions" {
   name          = "raw_transactions"
-  provider = aws.glue_workaround
+  provider      = aws.glue_workaround
   database_name = aws_glue_catalog_database.etl_catalog.name
 
   storage_descriptor {

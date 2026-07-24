@@ -1,0 +1,23 @@
+name: Terraform CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.12.2"
+
+      - run: terraform fmt -check
+      - run: terraform init
+      - run: terraform plan -out=tfplan
+      - run: terraform apply -auto-approve tfplan
+        if: github.ref == 'refs/heads/main'

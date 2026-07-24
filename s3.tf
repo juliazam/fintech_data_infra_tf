@@ -3,6 +3,6 @@ resource "aws_s3_bucket" "state_bucket" {
 }
 
 module "raw_data" {
-  source = "./modules/s3"
+  source      = "./modules/s3"
   bucket_name = "${local.full_name}-raw-data"
 }
