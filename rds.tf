@@ -5,6 +5,7 @@ resource "aws_db_instance" "etl_db" {
     instance_class = "db.t3.micro"
 
     allocated_storage = 20
+    max_allocated_storage = 0
 
     db_name  = "etl_processed"
     username = "etl_admin"
